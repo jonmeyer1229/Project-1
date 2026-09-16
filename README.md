@@ -7,7 +7,7 @@ Below are some projects I have completed
 **Zepto E-Commerce Inventory Analysis — SQL Server**
 
 **📌 Project Overview**
-This project analyzes an e-commerce inventory dataset from Zepto using Microsoft SQL Server and SSMS. The goal is to demonstrate how SQL can transform an unfiltered product dataset into useful business information around pricing, discounts, inventory, product availability, and product value.
+This project analyzes an e-commerce inventory dataset from Zepto using Microsoft SQL Server and SSMS. The goal is to demonstrate how SQL can transform an unfiltered product dataset into useful business information around pricing, discounts, inventory, product availability, and product value. This dataset was founb on [Kaggle](https://www.kaggle.com/datasets/palvinder2006/zepto-inventory-dataset/data?select=zepto_v2.csv).
 
 The project follows a complete data-analysis workflow:
 

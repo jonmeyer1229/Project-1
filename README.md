@@ -7,7 +7,7 @@ Below are some projects I have completed
 **Zepto E-Commerce Inventory Analysis — SQL Server**
 
 **📌 Project Overview**
-This project analyzes an e-commerce inventory dataset from Zepto using Microsoft SQL Server and SSMS. The goal is to demonstrate how SQL can transform an unfiltered product dataset into useful business information around pricing, discounts, inventory, product availability, and product value. This dataset was founb on [Kaggle](https://www.kaggle.com/datasets/palvinder2006/zepto-inventory-dataset/data?select=zepto_v2.csv).
+This project analyzes an e-commerce inventory dataset from Zepto using Microsoft SQL Server and SSMS. The goal is to demonstrate how SQL can transform an unfiltered product dataset into useful business information around pricing, discounts, inventory, product availability, and product value. This dataset was found on [Kaggle](https://www.kaggle.com/datasets/palvinder2006/zepto-inventory-dataset/data?select=zepto_v2.csv).
 
 The project follows a complete data-analysis workflow:
 
@@ -45,6 +45,28 @@ For example:
 One record had an MRP of zero and was removed before analysis.
 
 The raw table was preserved separately from the cleaned analysis table so that the original dataset remained available for reference.
+
+**Columns**
+
+**sku_id**: Unique identifier for each product entry (Synthetic Primary Key)
+
+**name**: Product name as it appears on the app
+
+**category**: Product category like Fruits, Snacks, Beverages, etc.
+
+**mrp**: Maximum Retail Price (originally in paise, converted to ruppes)
+
+**discountPercent**: Discount applied on MRP
+
+**discountedSellingPrice**: Final price after discount (also converted to ruppes)
+
+**availableQuantity**: Units available in inventory
+
+**weightInGms**: Product weight in grams
+
+**outOfStock**: Boolean flag indicating stock availability
+
+**quantity**: Number of units per package (mixed with grams for loose product
 
 **🧹 Data Cleaning & Preparation**
 

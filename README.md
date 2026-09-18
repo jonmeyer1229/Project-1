@@ -34,13 +34,31 @@ The dataset contains 3,732 product records across 14 product categories.
 
 Each row represents a product/SKU and contains information about pricing, discounts, inventory, availability, weight, and quantity.
 
+**🧹 Data Cleaning & Preparation**
+
+Before analyzing the data, I used SQL Server to:
+
+Create the Zepto database.
+Import the raw CSV data.
+Create a raw staging table.
+Identify null values.
+Identify duplicate records.
+Identify products with invalid pricing.
+Remove the zero-MRP record.
+Convert prices from paise to dollars.
+Convert the True/False stock field into a SQL Server BIT value.
+
+After cleaning, the dataset contained:
+
+3,731 usable product records
+
 **Data Preparation**
 
 The original price fields were stored in paise, so the MRP and discounted selling price were divided by 100 before analysis.
 
 For example:
 
-2500 paise → $25.00
+2500 paise → 25.00 rupee
 
 One record had an MRP of zero and was removed before analysis.
 
@@ -54,7 +72,7 @@ The raw table was preserved separately from the cleaned analysis table so that t
 
 **category**: Product category like Fruits, Snacks, Beverages, etc.
 
-**mrp**: Maximum Retail Price (originally in paise, converted to ruppes)
+**mrp**: Maximum Retail Price (originally in paise, converted to rupees)
 
 **discountPercent**: Discount applied on MRP
 
@@ -86,7 +104,7 @@ Identify products with invalid pricing.
 
 Remove the zero-MRP record.
 
-Convert prices from paise to dollars.
+Convert prices from paise to rupees.
 
 Convert the True/False stock field into a SQL Server BIT value.
 
@@ -98,8 +116,7 @@ After cleaning, the dataset contained:
 
 **Q1. Which products offer the highest discounts?**
 
-SELECT TOP 10 name , mrp, discountPercent
-FROM zepto
-ORDER BY discountPercent DESC
+<img width="322" height="64" alt="image" src="https://github.com/user-attachments/assets/c62a717f-a7b4-41f4-a054-9ea76528c93d" />
+
 
 <img width="419" height="207" alt="image" src="https://github.com/user-attachments/assets/03e69966-e17d-492a-bf17-9a66f4a73179" />

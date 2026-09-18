@@ -34,18 +34,26 @@ The dataset contains 3,732 product records across 14 product categories.
 
 Each row represents a product/SKU and contains information about pricing, discounts, inventory, availability, weight, and quantity.
 
-**🧹 Data Cleaning & Preparation**
+**🧹 Data Cleaning**
 
 Before analyzing the data, I used SQL Server to:
 
 Create the Zepto database.
+
 Import the raw CSV data.
+
 Create a raw staging table.
+
 Identify null values.
+
 Identify duplicate records.
+
 Identify products with invalid pricing.
+
 Remove the zero-MRP record.
+
 Convert prices from paise to dollars.
+
 Convert the True/False stock field into a SQL Server BIT value.
 
 After cleaning, the dataset contained:
@@ -86,37 +94,16 @@ The raw table was preserved separately from the cleaned analysis table so that t
 
 **quantity**: Number of units per package (mixed with grams for loose product
 
-**🧹 Data Cleaning & Preparation**
-
-Before analyzing the data, I used SQL Server to:
-
-Create the Zepto database.
-
-Import the raw CSV data.
-
-Create a raw staging table.
-
-Identify null values.
-
-Identify duplicate records.
-
-Identify products with invalid pricing.
-
-Remove the zero-MRP record.
-
-Convert prices from paise to rupees.
-
-Convert the True/False stock field into a SQL Server BIT value.
-
-After cleaning, the dataset contained:
-
-3,731 usable product records
-
  **Business Questions & SQL Analysis**
 
 **Q1. Which products offer the highest discounts?**
 
-<img width="322" height="64" alt="image" src="https://github.com/user-attachments/assets/c62a717f-a7b4-41f4-a054-9ea76528c93d" />
+SELECT TOP 10 name , mrp, discountPercent
 
+FROM zepto
+
+ORDER BY discountPercent DESC
 
 <img width="419" height="207" alt="image" src="https://github.com/user-attachments/assets/03e69966-e17d-492a-bf17-9a66f4a73179" />
+
+**Q2. what are high-MRP products that are currently out of stock?**

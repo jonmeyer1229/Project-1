@@ -106,4 +106,74 @@ ORDER BY discountPercent DESC
 
 <img width="419" height="207" alt="image" src="https://github.com/user-attachments/assets/03e69966-e17d-492a-bf17-9a66f4a73179" />
 
-**Q2. what are high-MRP products that are currently out of stock?**
+**What does this mean?**
+The highest discounts in the dataset are concentrated around 50%, suggesting that some products are being used as heavily discounted offerings.
+
+Large discounts can help attract customers, but a discount percentage alone does not tell us whether a product generates high value. A 50% discount on a $45 product has a much smaller dollar impact than a 20% discount on a $1,000 product.
+
+This is an example of why analysts should evaluate discount percentages alongside actual prices.
+
+**Q2. What are high-MRP products that are currently out of stock?**
+
+SELECT 	DISTINCT name, mrp
+
+FROM zepto
+
+WHERE outOfStock = 'TRUE' and mrp > 300
+
+ORDER BY mrp DESC;
+
+<img width="353" height="97" alt="image" src="https://github.com/user-attachments/assets/727869e9-acea-49c8-bdc5-b2d593ea61ff" />
+
+**What does this mean?**
+
+These products represent examples of relatively high-priced items that are unavailable. From an inventory-management perspective, these products could deserve attention because a stockout on a higher-priced item can represent more potential lost sales value than a stockout on a lower-priced product.
+
+**Q3. What is the estimated potential revenue for each product category?**
+
+SELECT category,
+
+SUM(discountedSellingPrice * availableQuantity) AS total_revenue
+
+FROM zepto
+
+GROUP BY category
+
+ORDER BY total_revenue;
+
+<img width="235" height="288" alt="image" src="https://github.com/user-attachments/assets/848eff1f-68f4-4b98-935d-b4e7ac213623" />
+
+**What does this mean?**
+
+Cooking Essentials and Munchies have the highest estimated inventory value in the dataset. This suggests those categories represent significant amounts of capital tied up in inventory. From an operational perspective, categories with high inventory value may deserve additional monitoring because inventory that sits too long ties up working capital and may eventually require markdowns or promotions.
+
+**Q4. Which expensive products have relatively small discounts?**
+
+SELECT DISTINCT name, mrp, discountPercent
+
+FROM zepto
+
+WHERE mrp > 500 AND discountPercent < 10
+
+ORDER BY mrp DESC, discountPercent DESC;
+
+<img width="452" height="208" alt="image" src="https://github.com/user-attachments/assets/70636835-85ae-449b-ae24-9f9b413cb7ef" />
+
+These products have relatively high prices but little or no discount. This could indicate that certain higher-priced products have stronger pricing flexibility, stronger brand positioning, or less need for discounting. From a pricing-analysis perspective, these products could be compared with their inventory levels and availability to determine whether additional discounts are justified.
+
+**Q5. Which categories offer the highest average discounts?**
+
+SELECT TOP 5 category,
+
+ROUND(AVG(discountPercent),2)  AS avg_discount
+
+FROM zepto
+
+GROUP BY category
+
+ORDER BY avg_discount DESC
+
+<img width="234" height="114" alt="image" src="https://github.com/user-attachments/assets/dd93911f-b874-4dad-b54c-1de8f2a28d8a" />
+
+Fruits & Vegetables have the highest average discount in the dataset at approximately 15.46%, followed by Meats, Fish & Eggs at approximately 11.03%. These categories may rely more heavily on discounting than many of the packaged-goods categories. One possible business consideration is that perishable categories may require more aggressive pricing strategies to move inventory.
+

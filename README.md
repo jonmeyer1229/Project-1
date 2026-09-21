@@ -107,11 +107,8 @@ ORDER BY discountPercent DESC
 <img width="419" height="207" alt="image" src="https://github.com/user-attachments/assets/03e69966-e17d-492a-bf17-9a66f4a73179" />
 
 **What does this mean?**
-The highest discounts in the dataset are concentrated around 50%, suggesting that some products are being used as heavily discounted offerings.
 
-Large discounts can help attract customers, but a discount percentage alone does not tell us whether a product generates high value. A 50% discount on a $45 product has a much smaller dollar impact than a 20% discount on a $1,000 product.
-
-This is an example of why analysts should evaluate discount percentages alongside actual prices.
+The highest discounts in the dataset are concentrated around 50%, suggesting that some products are being used as heavily discounted offerings. Large discounts can help attract customers, but a discount percentage alone does not tell us whether a product generates high value. A 50% discount on a $45 product has a much smaller dollar impact than a 20% discount on a $1,000 product. This is an example of why analysts should evaluate discount percentages alongside actual prices.
 
 **Q2. What are high-MRP products that are currently out of stock?**
 
@@ -218,3 +215,5 @@ FROM zepto;
 **What Does this mean?**
 
 The dataset is overwhelmingly composed of products in the Low-weight category. Only 46 products fall into the Bulk category. This could be useful from a fulfillment perspective because heavier and bulkier products can have different storage, handling, and delivery requirements than smaller products.
+
+****

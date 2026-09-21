@@ -177,3 +177,44 @@ ORDER BY avg_discount DESC
 
 Fruits & Vegetables have the highest average discount in the dataset at approximately 15.46%, followed by Meats, Fish & Eggs at approximately 11.03%. These categories may rely more heavily on discounting than many of the packaged-goods categories. One possible business consideration is that perishable categories may require more aggressive pricing strategies to move inventory.
 
+**Q6. Which products provide the best value based on price per gram?**
+
+For products weighing at least 100 grams, I calculated:
+
+Discounted Selling Price ÷ Weight in Grams
+
+SELECT DISTINCT name, weightInGms, discountedSellingprice,
+
+ROUND(discountedSellingPrice/weightInGms,2) AS price_per_gram
+
+FROM Zepto
+
+WHERE weightInGms >=100
+
+ORDER BY price_per_gram;
+
+<img width="601" height="209" alt="image" src="https://github.com/user-attachments/assets/71086508-82e6-4f4c-9310-353dc573bead" />
+
+**What does this mean?**
+
+Price per gram creates a more standardized way to compare products with different package sizes. For example, comparing a 500g package directly with a 1,000g package using only the selling price can be misleading. Price-per-gram helps identify which products provide more product for each dollar spent. This metric could also be useful for comparing competing brands within the same category.
+
+**Q7.How can prdoucts get grouped based on weight into Low, Medium, and Bulk categories?**
+
+SELECT DISTINCT name, weightInGms,
+
+CASE WHEN weightInGms < 1000 THEN 'LOW'
+
+WHEN weightInGms < 5000 THEN 'MEDIUM'
+
+ELSE 'BULK'
+
+END AS weight_category
+
+FROM zepto;
+
+<img width="480" height="212" alt="image" src="https://github.com/user-attachments/assets/21e50a5a-e0a8-4444-8499-823cf2d6103e" />
+
+**What Does this mean?**
+
+The dataset is overwhelmingly composed of products in the Low-weight category. Only 46 products fall into the Bulk category. This could be useful from a fulfillment perspective because heavier and bulkier products can have different storage, handling, and delivery requirements than smaller products.

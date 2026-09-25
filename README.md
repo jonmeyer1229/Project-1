@@ -48,7 +48,7 @@ Identify products with invalid pricing.
 
 Remove the zero-MRP record.
 
-Convert prices from paise to dollars.
+Convert prices from paise to rupees.
 
 Convert the True/False stock field into a SQL Server BIT value.
 
@@ -212,4 +212,35 @@ FROM zepto;
 
 The dataset is overwhelmingly composed of products in the Low-weight category. Only 46 products fall into the Bulk category. This could be useful from a fulfillment perspective because heavier and bulkier products can have different storage, handling, and delivery requirements than smaller products.
 
+**Q8. Which categories contain the most total inventory weight?**
+
+SELECT category,
+
+SUM(weightInGms*availableQuantity) AS Total_weight
+
+FROM zepto
+
+GROUP BY category
+
+ORDER BY total_weight;
+
+<img width="232" height="287" alt="image" src="https://github.com/user-attachments/assets/076a7a29-2128-43d8-8146-94dd29f36155" />
+
+**What Does This Mean?**
+
+Cooking Essentials and Munchies represent the largest amount of physical inventory weight in the dataset. This is useful because inventory management is affects monetary value, warehouse space, handling costs & transportation.  A category can therefore be important because of its financial value, physical size, or both.
+
+**Conclusion**
+
+The purpose of this project was to demonstrate how a data analyst can take an unfiltered e-commerce dataset, clean it, structure it, and use SQL to answer meaningful business questions. Through exploratory analysis I have uncovered multiple useful insights in this data set such as:
+
+Most products are currently in stock- This means the dataset reflects a catalog with relatively broad availability.
+
+Cooking Essentials and Munchies carry significant inventory - Both categories had an estimated inventory value of approximately $337K and approximately 1.4 million grams of inventory weight. This makes them important categories to monitor from both a financial and operational perspective.
+
+Discounting varies significantly by category- Fruits & Vegetables had the highest average discount at 15.46%, substantially higher than several packaged-product categories. This demonstrates that discount strategy can vary considerably across product categories.
+
+A small number of high-value products are out of stock - Several products above $300 in MRP were unavailable. Without customer demand data, we cannot quantify lost revenue, but these products represent potential opportunities for further inventory investigation.
+
+A production-level analysis would benefit from additional information such as historical sales, customer demand, order volume, inventory turnover, supplier costs, and timestamps. Those data points would allow the analysis to move beyond the current inventory snapshot and provide stronger insights into profitability, demand forecasting, and inventory optimization. Overall, this project demonstrates how SQL can turn a raw product catalog into structured information that can support better business decisions.
 ****
